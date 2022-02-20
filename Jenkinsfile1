@@ -36,6 +36,7 @@ pipeline {
                             }
                             else 
                             {
+                                BUILD_COMPLETE = true
                                 sh 'exit 1'
                             }
                             echo "The Monitoring Loop ends here...Bye.....!"

@@ -8,7 +8,7 @@ pipeline {
             failFast true
             parallel {
                 stage('Building') {
-                 when { BUILD_COMPLETE == false }
+                 when { BUILD_COMPLETE 'false' }
                     steps {
                         
                         sh "mvn clean install  |  tee output.log"
@@ -21,8 +21,7 @@ pipeline {
                     }
                 }
                 stage('Monitoring the logs!!') {
-                  when { BUILD_COMPLETE == false }
-                    steps {
+                     steps {
                         script {
                             while (BUILD_COMPLETE != true) {
                                 sh '! grep "WARNING" output.log'

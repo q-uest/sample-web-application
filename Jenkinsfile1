@@ -8,7 +8,7 @@ pipeline {
             failFast true
             parallel {
                 stage('Building') {
-                 when { BUILD_COMPLETE 'false' }
+                 when { environment BUILD_COMPLETE, value: 'false' }
                     steps {
                         
                         sh "mvn clean install  |  tee output.log"

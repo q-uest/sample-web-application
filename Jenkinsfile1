@@ -34,6 +34,10 @@ pipeline {
                                 echo "Done with grep warning in monitoring....!!"
                                                                 
                             }
+                            else 
+                            {
+                                error('Stopping early…')
+                            }
                             echo "The Monitoring Loop ends here...Bye.....!"
                         }
                     }

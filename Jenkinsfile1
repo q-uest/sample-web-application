@@ -24,7 +24,7 @@ pipeline {
                 stage('Monitoring the logs!!') {
                 when { 
                 environment name: 'BUILD_COMPLETE', value: 'false'
-                environment name: 'STATUS_CODE', value: 0
+                environment name: 'STATUS_CODE', value: '0'
                 
                 }
                      steps {

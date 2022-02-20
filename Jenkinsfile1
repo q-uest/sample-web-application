@@ -30,6 +30,7 @@ pipeline {
                             {
                                 echo "This is inside MONITORING stage!"
                                 def STATUS_CODE = sh script:'! grep  "WARNING" output.log', returnStatus:true
+                                echo "Done with grep warning in monitoring....!!"
                                                                 
                             }
                             echo "The Monitoring Loop ends here...Bye.....!"

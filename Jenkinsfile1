@@ -22,6 +22,7 @@ pipeline {
                     }
                 }
                 stage('Monitoring the logs!!') {
+                    when { environent name: 'STATUS_CODE', value: 1}
                     steps {
                         script {
                             echo "This is Monitoring stage!!"

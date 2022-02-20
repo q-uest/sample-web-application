@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        BUILD_COMPLETE = false
+        BUILD_COMPLETE = true
         STATUS_CODE=0
     }
     stages {

@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         BUILD_COMPLETE = false
+        STATUS_CODE=0
     }
     stages {
         stage('Build') {
@@ -21,15 +22,16 @@ pipeline {
                     }
                 }
                 stage('Monitoring the logs!!') {
+                when { 
+                environment name: 'BUILD_COMPLETE', value: 'false'
+                environment name: 'STATUS_CODE', value: 0
+                
+                }
                      steps {
                         script {
                             while (BUILD_COMPLETE != true) {
-                                sh '! grep "WARNING" output.log'
-                                if [ $? -ne 0 ]
-                                then
-                                   BUILD_COMPLETE = true
-                                fi
-                                
+                                def STATUS_CODE = sh script:'! grep "WARNING" output.log', returnStatus:true
+                                                                
                             }
                         }
                     }

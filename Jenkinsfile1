@@ -25,6 +25,10 @@ pipeline {
                         script {
                             while (BUILD_COMPLETE != true) {
                                 sh '! grep "WARNING" output.log'
+                                if [ $? -ne 0 ]
+                                then
+                                   BUILD_COMPLETE = true
+                                fi
                                 
                             }
                         }

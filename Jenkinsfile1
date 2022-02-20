@@ -9,7 +9,7 @@ pipeline {
             failFast true
             parallel {
                 stage('Building') {
-                 when { environment name: 'BUILD_COMPLETE', value: 'false' }
+                when { environment name: 'BUILD_COMPLETE', value: 'false' }
                     steps {
                         
                         sh "mvn clean install  |  tee output.log"
@@ -25,6 +25,7 @@ pipeline {
                     steps {
                         script {
                             while (STATUS_CODE == 0) {
+                                echo "This is inside MONITORING stage!"
                                 def STATUS_CODE = sh script:'! grep "WARNING" output.log', returnStatus:true
                                                                 
                             }

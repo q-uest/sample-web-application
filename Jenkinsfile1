@@ -29,7 +29,7 @@ pipeline {
                 }
                      steps {
                         script {
-                            while (BUILD_COMPLETE != true) {
+                            while (STATUS_CODE == 0) {
                                 def STATUS_CODE = sh script:'! grep "WARNING" output.log', returnStatus:true
                                                                 
                             }

@@ -36,7 +36,7 @@ pipeline {
                             }
                             else 
                             {
-                                error('Stopping early…')
+                                sh 'exit 1'
                             }
                             echo "The Monitoring Loop ends here...Bye.....!"
                         }

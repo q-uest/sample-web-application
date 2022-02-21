@@ -1,11 +1,14 @@
-pipeline {
+pipeline 
+{
     agent any
-    environment {
+    environment 
+    {
         BUILD_COMPLETE=false
         STATUS_CODE=0
-        EXT_STATUS=1;
+        EXT_STATUS=1
     }
-    stages {
+    stages
+    {
         
         stage('Build') {
             failFast true

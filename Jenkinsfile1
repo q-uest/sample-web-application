@@ -33,7 +33,7 @@ pipeline {
                             {
                                 /* echo "This is inside MONITORING stage!" */
                                 
-                                STATUS_CODE = sh '! if [ `grep  "WARNING" output.log` -eq 0 ] then exit 999; fi;'
+                                STATUS_CODE = sh '! if [ `grep -q "WARNING" Dockerfile|echo $?` -eq 0 ]; then exit 999; fi;'
                                 
                                 /* BUILD_COMPLETE = true */
                                 

@@ -25,20 +25,22 @@ pipeline {
                 stage('Monitoring the logs!!') {
                         steps {
                         script {
-                            echo "This is Monitoring stage!!"
-                            echo "The value of BUILD_COMPLETE ${BUILD_COMPLETE}, STATUS_CODE=${STATUS_CODE}"
+                            /* echo "This is Monitoring stage!!"
+                            echo "The value of BUILD_COMPLETE ${BUILD_COMPLETE}, STATUS_CODE=${STATUS_CODE}" */
+
                             if ( STATUS_CODE!=0 ) 
                             {
-                                echo "This is inside MONITORING stage!"
+                                /* echo "This is inside MONITORING stage!" */
+                                
                                 def STATUS_CODE = sh script:'! grep  "WARNING" output.log', returnStatus:true
-                                BUILD_COMPLETE = true
-                                echo "Build has failed...Exiting....(this is from Monitoring Block).....!"
+                                
+                                /* BUILD_COMPLETE = true */
+                                
+                                echo "Build has failed...Exiting...!!"
+                                
                                 sh 'exit 1' 
                             }
-                            else({
-                                echo "Monitoring Loop Continues...."
-                            })
-                            
+                                                        
                         }
                     }
                 }

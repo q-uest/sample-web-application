@@ -29,11 +29,11 @@ pipeline {
 
                             echo "The value of BUILD_COMPLETE ${BUILD_COMPLETE}, STATUS_CODE=${STATUS_CODE}" */
 
-                            if ( STATUS_CODE==0 ) 
+                            if ( STATUS_CODE == 0 ) 
                             {
                                 /* echo "This is inside MONITORING stage!" */
                                 
-                                def STATUS_CODE = sh script:'! grep -v "WARNING" output.log', returnStatus:true
+                                STATUS_CODE = sh '! if [ `grep  "WARNING" output.log` -eq 0 ] then exit 999; fi;'
                                 
                                 /* BUILD_COMPLETE = true */
                                 

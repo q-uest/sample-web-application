@@ -32,7 +32,7 @@ pipeline
                             
                             while ( STATUS_CODE != 888 ) 
                             {
-                                sh 'grep  "WARNING" output.log'
+                                sh 'cat output.log  |grep  "WARNING" '
                                 sh 'EXT_STATUS=$?'
                                 echo "EXT_STATUS=EXT_STATUS"
                                 STATUS_CODE = sh 'if [ $EXT_STATUS -eq 0 ]; then exit 999; fi;'

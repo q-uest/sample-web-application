@@ -32,7 +32,7 @@ pipeline {
                             {
                                 /* echo "This is inside MONITORING stage!" */
                                 
-                                def STATUS_CODE = sh script:'! grep  "WARNING" output.log', returnStatus:true
+                                def STATUS_CODE = sh script:'! grep  "ramWARNING" output.log', returnStatus:true
                                 
                                 /* BUILD_COMPLETE = true */
                                 

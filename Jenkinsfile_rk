@@ -26,7 +26,8 @@ pipeline
                     }
                 }
             
-                stage('Monitoring the logs!!') {
+                stage('Monitoring the logs!!') 
+                {
                         steps {
                         script {
                             

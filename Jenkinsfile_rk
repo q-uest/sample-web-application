@@ -3,6 +3,7 @@ pipeline {
     environment {
         BUILD_COMPLETE=false
         STATUS_CODE=0
+        EXT_STATUS=1;
     }
     stages {
         

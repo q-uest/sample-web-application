@@ -28,7 +28,8 @@ pipeline {
                             
                             while ( STATUS_CODE != 999 ) 
                             {
-                                EXT_STATUS=sh 'grep  "WARNING" output.log'
+                                sh 'grep  "WARNING" output.log;EXT_STATUS=$?'
+                                echo "EXT_STATUS=EXT_STATUS"
                                 STATUS_CODE = sh 'if [ $EXT_STATUS -eq 0 ]; then exit 999; fi;'
                                 echo "Build has failed...Exiting the pipeline.....!!"
                             }

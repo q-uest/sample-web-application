@@ -33,7 +33,7 @@ pipeline {
                                 
                                 echo "Build has failed...Exiting the pipeline.....!!"
                                 
-                                sh 'exit 1' 
+                                
                             }
                                                         
                         }

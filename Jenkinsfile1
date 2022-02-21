@@ -33,7 +33,7 @@ pipeline {
                                 def STATUS_CODE = sh script:'! grep  "WARNING" output.log', returnStatus:true
                                 BUILD_COMPLETE = true
                                 echo "Build has failed...Exiting....(this is from Monitoring Block).....!"
-                                # sh 'exit 1'                                
+                                /* sh 'exit 1'                                */
                             }
                             else({
                                 echo "Monitoring Loop Continues...."

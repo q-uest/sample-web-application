@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         BUILD_COMPLETE=false
-        STATUS_CODE=1
+        STATUS_CODE=0
     }
     stages {
         
@@ -26,13 +26,14 @@ pipeline {
                         steps {
                         script {
                             /* echo "This is Monitoring stage!!"
+
                             echo "The value of BUILD_COMPLETE ${BUILD_COMPLETE}, STATUS_CODE=${STATUS_CODE}" */
 
-                            if ( STATUS_CODE!=0 ) 
+                            if ( STATUS_CODE==0 ) 
                             {
                                 /* echo "This is inside MONITORING stage!" */
                                 
-                                def STATUS_CODE = sh script:'! grep -v "ramWARNING" output.log', returnStatus:true
+                                def STATUS_CODE = sh script:'! grep -v "WARNING" output.log', returnStatus:true
                                 
                                 /* BUILD_COMPLETE = true */
                                 

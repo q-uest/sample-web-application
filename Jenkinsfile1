@@ -31,16 +31,13 @@ pipeline {
                             {
                                 echo "This is inside MONITORING stage!"
                                 def STATUS_CODE = sh script:'! grep  "WARNING" output.log', returnStatus:true
-                                echo "Done with grep warning in monitoring....!!"
-                                                                
-                            }
-                            else 
-                            {
                                 BUILD_COMPLETE = true
                                 echo "Build has failed...Exiting....(this is from Monitoring Block).....!"
-                                sh 'exit 1'
-
+                                sh 'exit 1'                                
                             }
+                            else({
+                                echo "Monitoring Loop Continues...."
+                            })
                             
                         }
                     }

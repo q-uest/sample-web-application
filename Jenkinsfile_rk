@@ -9,8 +9,7 @@ pipeline
     }
     stages
     {
-        
-        stage('Build') {
+     stage('Build') {
             failFast true
             parallel {
                 stage('Building') {
@@ -26,7 +25,7 @@ pipeline
                         }
                     }
                 }
-            }
+            
                 stage('Monitoring the logs!!') {
                         steps {
                         script {
@@ -43,6 +42,7 @@ pipeline
                         }
                     }
                 }
+            }
             
         }
     }

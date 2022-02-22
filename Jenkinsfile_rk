@@ -1,4 +1,5 @@
-pipeline {
+pipeline 
+{
     agent any
     environment {
         BUILD_COMPLETE=false
@@ -25,12 +26,14 @@ pipeline {
                     }
                 }
             
-                stage('Monitoring the logs!!') {
-                        steps {
+                stage('Monitoring the logs!!') 
+                {
+                        steps 
+                        {
                             echo "This is monitoring Logs !!"
                             sh 'grep "WARNING" output.log'
-                            echo "STATUS_CODE=${STATUS_CODE}"
-                        
+                            
+                        script{    
                             while ( STATUS_CODE < 999 ) 
                             {
                                 
@@ -41,6 +44,7 @@ pipeline {
                                 
                                 sh 'exit 1' 
                             }
+                        }
                                                         
                         }
                     }
@@ -48,3 +52,4 @@ pipeline {
             }
         }
     }
+}

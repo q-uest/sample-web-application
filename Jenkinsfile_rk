@@ -1,6 +1,10 @@
 pipeline 
 {
     agent any
+         properties {
+        priority(5)
+                }
+           
     environment {
         BUILD_COMPLETE=false
         STATUS_CODE=999
@@ -11,9 +15,6 @@ pipeline
             failFast true
             parallel 
             {
-                properties {
-        priority(5)
-                }
                 stage('Building') {
                     steps 
                     {
@@ -29,9 +30,6 @@ pipeline
                     }
                 }
             
-            properties {
-        priority(10)
-                }
                 
                 stage('Monitoring the logs!!') 
                 {

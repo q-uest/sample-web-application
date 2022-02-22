@@ -31,7 +31,8 @@ pipeline
                         steps 
                         {
                             echo "This is monitoring Logs !!"
-                            sh '! grep "WARNING" output.log'
+                            sh '! grep "WARNING" output.log;sleep 60;'
+
                             
                         script
                         {    

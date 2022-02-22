@@ -11,7 +11,6 @@ pipeline {
             parallel 
             {
                 stage('Building') {
-                    when { environment name: 'BUILD_COMPLETE', value: 'false' }
                     steps 
                     {
                         

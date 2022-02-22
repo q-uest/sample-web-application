@@ -11,14 +11,16 @@ pipeline {
             parallel 
             {
                 stage('Building') {
-                when { environment name: 'BUILD_COMPLETE', value: 'false' }
-                    steps {
+                    when { environment name: 'BUILD_COMPLETE', value: 'false' }
+                    steps 
+                    {
                         
                         sh "mvn clean install  |  tee output.log"
 
                         sh '! grep "WARNING" output.log'
 
-                        script {
+                        script 
+                        {
                             BUILD_COMPLETE = true
                         }
                     }
@@ -29,9 +31,11 @@ pipeline {
                         script {
                             echo "This is monitoring Logs !!"
                             sh 'grep "WARNING" output.log'
+                        
                             while ( STATUS_CODE != 999 ) 
                             {
                                 
+                                echo "this is inside Monitoring logs...."
                                 STATUS_CODE = sh 'grep  "WARNING" output.log; if [ $? -eq 0 ]; then exit 888; fi;'
                                 
                                 echo "Build has failed...Exiting the pipeline.....!!"

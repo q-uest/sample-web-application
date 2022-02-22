@@ -15,7 +15,7 @@ pipeline
                     steps 
                     {
                         
-                        sh "mvn clean install  |  tee output.log"
+                        sh "mvn  install  |  tee output.log"
 
                         sh '! grep "WARNING" output.log'
 

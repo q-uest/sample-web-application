@@ -1,11 +1,7 @@
 pipeline 
 {
     agent any
-         properties {
-        priority(5)
-                }
-           
-    environment {
+         environment {
         BUILD_COMPLETE=false
         STATUS_CODE=999
     }

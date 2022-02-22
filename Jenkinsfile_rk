@@ -31,9 +31,7 @@ pipeline
                         steps 
                         {
                             echo "This is monitoring Logs !!"
-                            sh '! grep "WARNING" output.log;'
-
-                            
+                                                        
                         script
                         {    
                             echo "STATUS_CODE=${STATUS_CODE}"

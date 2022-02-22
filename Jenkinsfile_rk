@@ -25,10 +25,10 @@ pipeline {
                 stage('Monitoring the logs!!') {
                         steps {
                         script {
-                            
+                            sh 'grep "WARNING" output.log'
                             while ( STATUS_CODE != 999 ) 
                             {
-                                sh 'grep "WARNING" output.log'
+                                
                                 STATUS_CODE = sh 'grep  "WARNING" output.log; if [ $? -eq 0 ]; then exit 888; fi;'
                                 
                                 echo "Build has failed...Exiting the pipeline.....!!"

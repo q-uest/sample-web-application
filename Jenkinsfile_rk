@@ -30,6 +30,7 @@ pipeline {
                         script {
                             echo "This is monitoring Logs !!"
                             sh 'grep "WARNING" output.log'
+                            echo "STATUS_CODE=${STATUS_CODE}"
                         
                             while ( STATUS_CODE < 999 ) 
                             {

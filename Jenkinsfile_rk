@@ -42,9 +42,26 @@ pipeline
                                 
                                 echo "this is inside Monitoring logs...."
                                 sh '! grep "WARNING" output.log'
-                                STATUS_CODE=sh( script: 'if [ -s output.log ] ; then    ! grep  "WARNING" output.log; if [ $? -eq 0 ] ; then   exit 0; else   exit 999; fi; fi;',returnStatus: true)
+                                STATUS_CODE=sh( 
+                                    script: "
+                                    if [ -s output.log ]
+                                    then
+                                        ! grep  "WARNING" output.log
+                                        rs=$?
+                                        if [ $rs -eq 0 ]
+                                        then
+                                            echo exit 999
+                                        else
+                                            echo exit 0
+                                        fi
+                                    fi
+
+                                    
+                                    
+                                    ", 
+                                    returnStatus: true)
                                 
-                                echo "STATUS_CODE=${STATUS_CODE}"
+                                echo " Still in While Loop.......STATUS_CODE=${STATUS_CODE}"
                                                               
                                 
                             }

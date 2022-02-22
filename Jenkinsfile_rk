@@ -42,15 +42,17 @@ pipeline
                                 
                                 echo "this is inside Monitoring logs...."
                                 sh '! grep "WARNING" output.log'
-                                STATUS_CODE = sh 'if [ -s output.log ] ; then    ! grep  "WARNING" output.log; if [ $? -eq 0 ] ; then   exit 0; else   exit 111; fi; fi'
+                                STATUS_CODE = sh 'if [ -s output.log ] ; then    ! grep  "WARNING" output.log; if [ $? -eq 0 ] ; then   exit 0; else   exit 999; fi; fi'
                                 
-                                if (STATUS_CODE==111)
-                                {
-                                    sh 'exit 1'
-                                }
+                                echo "STATUS_CODE=${STATUS_CODE}"
                                                               
                                 
                             }
+                                echo "STATUS_CODE=${STATUS_CODE}"
+                                if (STATUS_CODE==999)
+                                {
+                                    sh 'exit 1'
+                                }
                         }
                                                         
                         }

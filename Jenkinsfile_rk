@@ -42,7 +42,7 @@ pipeline
                                 
                                 echo "this is inside Monitoring logs...."
                                 sh '! grep "WARNING" output.log'
-                                STATUS_CODE = sh 'if [ -s output.log ] ; then    ! grep  "WARNING" output.log; if [ $? -eq 0 ] ; then    exit 888; else    exit 0; fi; fi'
+                                STATUS_CODE = sh 'if [ -s output.log ] ; then    ! grep  "WARNING" output.log; if [ $? -eq 0 ] ; then   echo exit 0; else   echo exit 999; fi; fi'
                                 
                                 echo "Build has failed...Exiting the pipeline.....!!"
                                 

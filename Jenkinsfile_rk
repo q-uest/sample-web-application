@@ -32,7 +32,7 @@ pipeline {
                             echo "This is monitoring Logs !!"
                             sh 'grep "WARNING" output.log'
                         
-                            while ( STATUS_CODE != 999 ) 
+                            while ( STATUS_CODE <> 999 ) 
                             {
                                 
                                 echo "this is inside Monitoring logs...."

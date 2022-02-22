@@ -40,7 +40,7 @@ pipeline
                                 
                                 echo "this is inside Monitoring logs...."
                                 
-                                grep  'WARNING' output.log 
+                                sh "grep  'WARNING' output.log"
                                 STATUS_CODE=sh( 
                                     script: "if [ -s output.log ]; then ! grep  'WARNING' output.log ; else ! echo The output.log does not have any contentes yet;fi" ,
                                       returnStatus: true)

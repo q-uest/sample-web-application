@@ -11,6 +11,9 @@ pipeline
             failFast true
             parallel 
             {
+                properties {
+        priority(5)
+                }
                 stage('Building') {
                     steps 
                     {
@@ -26,6 +29,10 @@ pipeline
                     }
                 }
             
+            properties {
+        priority(10)
+                }
+                
                 stage('Monitoring the logs!!') 
                 {
                         steps 
